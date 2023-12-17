@@ -3,7 +3,7 @@ import pymysql, pytz
 from datetime import datetime, timedelta
 
 # 设置Github API认证信息
-token = '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'
+token = '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'
 g = Github(token)
 
 # 设置MySQL数据库连接信息
@@ -20,7 +20,7 @@ repository_input = input("请输入仓库名：")
 user = g.get_user(user_input)
 repo = user.get_repo(repository_input)
 
-print(user, repo)
+print("Processing User: %s with Repo: %s" %(user, repo))
 
 # 连接MySQL数据库
 connection = pymysql.connect(host=host, port=port, user=mysql_user, password=password, database=database, charset='utf8mb4')
@@ -41,6 +41,7 @@ commits = list(repo.get_commits())
 # 统计每个项目的提交数量和提交频率
 commit_counts = {}
 for commit in commits:
+    # print("Processing Commit: %s" %commit)
     date = commit.commit.author.date.date()  # 提交日期
     if date not in commit_counts:
         commit_counts[date] = 0
@@ -49,6 +50,8 @@ for commit in commits:
 # 计算平均提交频率
 total_days = (datetime.now().date() - min(commit_counts.keys())).days + 1
 average_frequency = len(commits) / total_days
+
+print("Calcuate done, the average frequency is %s" %average_frequency)
 
 # 保存提交数量和提交频率到数据库
 with connection.cursor() as cursor:
@@ -61,17 +64,21 @@ with connection.cursor() as cursor:
 
 connection.commit()
 
+print("Update commit count and average frequency complete")
+
 # 统计每个开发者的提交数量和贡献度
 developer_commits = {}
 total_commits = len(commits)
 for commit in commits:
+    # print("Processing Commit: %s" %commit)
     author = commit.commit.author.name
     if author not in developer_commits:
         developer_commits[author] = 0
     developer_commits[author] += 1
-////
+
 # 计算每个开发者的贡献度
 developer_contributions = {author: count / total_commits for author, count in developer_commits.items()}
+
 
 # 保存开发者提交数量和贡献度到数据库
 with connection.cursor() as cursor:
@@ -81,10 +88,13 @@ with connection.cursor() as cursor:
 
 connection.commit()
 
+print("Update author, commit_count and contribution complete, conclude %d times commit" %total_commits)
+
 # 通过提交信息分析代码质量变化趋势
 bug_keywords = ['bug', 'fix']  # 定义关键词列表
 bug_fix_count = 0
 for commit in commits:
+    # print("Processing Commit: %s" %commit)
     message = commit.commit.message.lower()
     for keyword in bug_keywords:
         if keyword in message:
@@ -97,6 +107,8 @@ with connection.cursor() as cursor:
     cursor.execute(sql, (bug_fix_count))
 
 connection.commit()
+
+print("Update bug fix count complete, the result is %d" %bug_fix_count)
 
 # 分支管理分析，将PaginatedList转换为List
 branches = list(repo.get_branches())
@@ -119,6 +131,7 @@ for pr in pull_requests:
 
 # 计算平均合并请求处理时长
 average_merge_time = average_merge_time / pull_request_count if pull_request_count > 0 else timedelta()
+print("Calcuate average merge time done, the result is %s" %average_merge_time)
 
 # 保存分支数量和平均合并请求处理时长到数据库
 with connection.cursor() as cursor:
@@ -127,9 +140,12 @@ with connection.cursor() as cursor:
 
 connection.commit()
 
+print("Update branch count and average merge time complete, conclude %d branches" %branch_count)
+
 # 时间序列分析
 weekday_commit_counts = {i: 0 for i in range(7)}  # 初始化每周的提交数量为0
 for commit in commits:
+    # print("Processing Commit: %s" %commit)
     weekday = commit.commit.author.date.weekday()
     weekday_commit_counts[weekday] += 1
 
@@ -140,6 +156,8 @@ with connection.cursor() as cursor:
         cursor.execute(sql, (weekday, count))
 
 connection.commit()
+print("Update weekday and commit count time complete")
 
 # 关闭数据库连接
 connection.close()
+print("Update all database complete")
