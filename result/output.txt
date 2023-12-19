@@ -1,53 +1,9 @@
-Average Commit Frequency: 0.41 commits per day
+Average Commit Frequency: 0.02 commits per day
 
-Bug Fix Count: 19
+Bug Fix Count: 6
 
-Branch Count: 15
+Branch Count: 1
 Average Merge Time: 0.0 seconds
 
 Author: Contribution
-rua: 5.74%
-flu: 1.64%
-Ale: 0.82%
-Jos: 27.05%
-Sur: 3.28%
-Jac: 0.82%
-yon: 0.82%
-sek: 9.84%
-sam: 1.64%
-Kie: 0.82%
-xav: 0.82%
-Nik: 0.82%
-Lor: 0.82%
-Jar: 2.46%
-Jan: 0.82%
-Jar: 0.82%
-Dan: 0.82%
-Goz: 0.82%
-leo: 0.82%
-god: 0.82%
-Aks: 3.28%
-Vu : 2.46%
-luc: 0.82%
-Nin: 0.82%
-raj: 2.46%
-yan: 0.82%
-huy: 1.64%
-Mar: 0.82%
-Ubu: 5.74%
-Ikk: 0.82%
-Dan: 0.82%
-Sul: 2.46%
-Vin: 0.82%
-tia: 0.82%
-tom: 0.82%
-Chr: 0.82%
-Jan: 0.82%
-Dar: 0.82%
-Ser: 0.82%
-Gui: 2.46%
-Lor: 0.82%
-tim: 2.46%
-Mar: 0.82%
-Tim: 1.64%
-gua: 0.82%
+ult: 100.00%
