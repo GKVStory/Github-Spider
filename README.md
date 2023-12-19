@@ -28,6 +28,9 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 ```python
 pip install -r requirements.txt
+
+# 注意，已知有两个库需要单独安装
+pip install PyGithub, pytz
 ```
 
 ### 2.3 配置数据库
