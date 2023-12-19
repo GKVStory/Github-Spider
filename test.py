@@ -2,8 +2,8 @@ import requests
 
 
 # 指定owner和repo
-owner = "llvm"
-repo = "llvm-project"
+owner = "facebookresearch"
+repo = "llama"
 
 # 构建API请求URL
 url = f"https://api.github.com/repos/{owner}/{repo}/commits"
