@@ -49,12 +49,14 @@ host = 'localhost'
 port = 3306
 mysql_user = 'root'
 password = 'rootroot'
+# 这个表的名字是我自己起的，在下一步创建
 database = 'github'
 ```
 
-需要提前创建表，代码如下：
+需要提前创建数据库和表，代码如下：
 
 ```mysql
+CREATE DATABASE github;
 CREATE TABLE time_series_analysis (
   weekday INT,
   commit_count INT
