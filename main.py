@@ -3,7 +3,7 @@ import pymysql, pytz
 from datetime import datetime, timedelta
 
 # 设置Github API认证信息
-token = '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'
+token = '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'
 g = Github(token)
 
 # 设置MySQL数据库连接信息
