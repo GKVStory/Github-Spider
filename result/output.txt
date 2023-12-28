@@ -1,9 +1,18 @@
-Average Commit Frequency: 0.02 commits per day
+Average Commit Frequency: 0.03 commits per day
 
-Bug Fix Count: 6
+Bug Fix Count: 2
 
-Branch Count: 1
+Branch Count: 2
 Average Merge Time: 0.0 seconds
 
 Author: Contribution
-ult: 100.00%
+Hen: 80.30%
+zha: 1.52%
+Muo: 1.52%
+Wen: 1.52%
+lhy: 3.03%
+lyj: 4.55%
+Col: 1.52%
+Pzq: 3.03%
+myk: 1.52%
+Nex: 1.52%
