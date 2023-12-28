@@ -1,2 +1,4 @@
 /.vscode
 /my_env
+*.pyc
+```
